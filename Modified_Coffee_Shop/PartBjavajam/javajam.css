@@ -1,0 +1,203 @@
+body { background-image: url(background.gif);
+    background-color: #f5f5dc;
+    color: #2E0000;
+    font-family: Arial, Verdana, sans-serif;
+}
+#wrapper{ background-color: #f5f5dc;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    min-width: 960px;
+    max-width: 2048px;
+    box-shadow: 3px 3px 3px #2e0000;
+}
+header { background-color: #d2b48c;
+}
+nav { background-color: #e6d6a9;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-align: center; 
+    padding: 10px;
+    position: relative;
+} 
+nav ul { list-style-type: none;
+    font-size: 1.5em;
+    margin: 0;
+}
+nav li { padding: 0.5em;
+   display: inline-block;
+}
+nav :link{ color: #795240;
+}
+nav :visited{ color: #a58366;
+}
+nav :hover{ color: #f5f5dc;
+}
+nav a { text-decoration: none; 
+    display: block;
+}
+nav ul ul { position: absolute;
+    background-color: #e6d6a9;
+    padding: 0;
+    display: none; 
+    text-align: left;
+    font-size: 0.9em;
+}
+nav ul ul li { border: 1px solid  #795240;
+    display: block;
+    width: 7em;
+    max-height: 1em;
+    padding-left: 1em;
+    margin-left: 0; 
+}
+nav li:hover ul { display: block; }
+main{ padding: 20px;
+    display: block;
+}
+#hero{ height: 300px;
+    color: #f5f5dc;
+    background-image: url(windingroad.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+#news{ overflow: auto;
+    font-size: 90%;
+}
+h1 { background-image: url(javalogo.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    height: 100px;
+    margin: 0;
+    text-indent: -9999px;
+}
+h2 { font-family: Georgia, 'Times New Roman', serif;
+}
+h3 { background-color: #e6d6a9;
+    text-transform: uppercase;
+}
+dt{ font-weight: bold;
+}
+main ul{list-style-image: url(favicon.jpg);
+}
+table{ margin: auto;
+    width: 80%;
+}
+td{ padding: 10px;
+}
+th{ padding: 10px;
+}
+#gallery { position: relative; }
+#gallery ul { width: 250px; 
+    list-style-type: none;
+}
+
+#gallery li { display: inline; 
+    padding: 50px;
+}
+#gallery img { border-style: none;
+}
+#gallery a { text-decoration: none; 
+    color: #333; 
+    font-style: italic;
+}
+#gallery span { display: none; }    
+#gallery a:hover span { display: block; 
+    position: absolute;
+	top: 150px; 
+	left: 400px; 
+    text-align: center;
+}
+form {font-family: Arial, sans-serif; }
+label { padding-left: 10px; }
+header, main, nav, footer, figure, figcaption, aside, section, article{ display: block;}
+#mobile{ display: none;}
+#desktop{ display: inline;}
+footer { background-color: #d2b48c;
+    color: #000000;
+    padding: 10px;
+    font-size: .60em;
+    font-style: italic;
+    text-align: center;
+}
+@media only screen and (max-width: 64em){ 
+    body{ background-image: none;
+        margin: 0;
+        background-color: #d2b48c;
+    }
+    #wrapper{ min-width: 0;
+        width: auto;
+        box-shadow: none;
+    }
+    h1{ margin: 0;
+        background-image: url(mobilejavalogo.gif);
+    }
+    #gallery a:hover span { display: block; 
+        position: absolute;
+        top: 150px; 
+        left: 300px;
+        text-align: center;
+    }
+    img{ width: 70%;
+        height: 70%;
+    }
+    main{ margin-left: 0;}
+    nav{ float: none;
+        width: auto;
+        padding: 0;
+    }
+    nav ul{ text-align: center;
+    }
+    nav li{ display: inline;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+    }
+}
+@media only screen and (max-width: 37.5em){
+    nav li{ display: inline-block;
+        width: 5em;
+        height: auto;
+        font-size: 120%;
+        text-align: center;
+        box-shadow: 2px 2px 2px #330000;
+        background-color: #f5f5dc;
+        margin: 1%;
+    }
+    nav, nav ul, nav li{ padding-left: 0;
+        padding-right: 0;
+        padding-top: 1em;
+    }
+    span{ font-size: 80%;
+    }
+    nav a{ display: block;
+    }
+    nav :link{ display: block;
+    }
+    nav :hover{ color: #333300;
+    }
+    main :link{ color: #ffffff;
+    }
+    main :visited{ color: #eaeaea;
+    }
+    main :hover{ color: #ffd700;
+    }
+    #hero{ height: auto;
+    }
+    section{ margin: 0;
+    }
+    #gallery a:hover span { display: block; 
+        position: absolute;
+        top: 150px; 
+        left: 300px;
+        text-align: center;
+    }
+    img{ width: 70%;
+        height: 70%;
+    }
+    #mobile{ display: inline;
+    }
+    #desktop{ display: none;
+    }
+}
