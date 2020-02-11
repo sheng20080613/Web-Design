@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<!-- Also read chapter 9 from slides - Regular Expressions -->
+
+<html>
+<head>
+	<title>Table CheckList</title>
+	<link rel="stylesheet" type="text/css" href="table.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script>
+		var newID=4;
+		var SelectedRow=0;
+		function addRow(){
+			var tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+            var newRow = tableRef.insertRow(tableRef.rows.length);
+			var newCell = newRow.insertCell(0);
+			newCell.innerHTML = '<input type="checkbox"  class="checkbox" onclick="SelectRow((this.parentNode.parentNode.rowIndex-1)/2);"/><br /><br /><img src="down.png" width="25px" onclick="dropDown((this.parentNode.parentNode.rowIndex-1)/2)";/>';
+			newCell = newRow.insertCell(1);
+			newCell.innerText = "Student " + newID;
+			newCell = newRow.insertCell(2);
+			newCell.innerText = "Teacher " + newID;
+			newCell = newRow.insertCell(3);
+			newCell.innerText = "Approved";
+			newCell = newRow.insertCell(4);
+			newCell.innerText = "Fall";
+			newCell = newRow.insertCell(5);
+			newCell.innerText = "TA";
+			newCell = newRow.insertCell(6);
+			newCell.innerText = Math.floor(Math.random()*(99999-10000)+10000);
+			newCell = newRow.insertCell(7);
+			newCell.innerText = "100%";
+			newCell = newRow.insertCell(8);
+			newRow.classList.add("row");
+			newCell.innerHTML = '<button class="delete" onclick="deleteRow(this.parentNode.parentNode.rowIndex)">Delete</button>';
+
+			var newRoww = tableRef.insertRow(tableRef.rows.length);
+			newCell = newRoww.insertCell(0);
+			newCell.innerHTML="Advisor:<br /><br />Award Details<br />Summer 1-2014(TA)<br />Budget Number: <br />Tuition Number: <br />Comments:<br /><br /><br />Award Status:<br /><br /><br />";
+			newCell.colSpan = 8;
+			newRoww.classList.add("dropDownTextArea");
+
+			newID++;
+		}
+		function deleteRow(rowNumber){
+			document.getElementById("myTable").deleteRow(rowNumber);
+			document.getElementById("myTable").deleteRow(rowNumber);
+			SelectedRow--;
+			ButtonColor();
+		}
+		function SelectRow(rowNumber){
+			if(document.getElementsByClassName("checkbox")[rowNumber].checked){
+				SelectedRow++;
+				document.getElementsByClassName("row")[rowNumber].style.backgroundColor="orange";
+				document.getElementsByClassName("delete")[rowNumber].style.display="block";
+			}
+			else{
+				SelectedRow--;
+				document.getElementsByClassName("row")[rowNumber].style.backgroundColor="white";
+				document.getElementsByClassName("delete")[rowNumber].style.display="none";
+			}
+			ButtonColor();
+		}
+		function ButtonColor(){
+			if (SelectedRow==0){
+				document.getElementById("button").style.backgroundColor="grey";
+			}
+			else{
+				document.getElementById("button").style.backgroundColor="orange";
+			}
+		}
+		function dropDown(rowNumber){
+			if(document.getElementsByClassName("dropDownTextArea")[rowNumber].style.display=="none"){
+				document.getElementsByClassName("dropDownTextArea")[rowNumber].style.display="table-row";	    
+			}
+			else{
+				document.getElementsByClassName("dropDownTextArea")[rowNumber].style.display="none";
+			}	
+		}
+		function show(){
+			if(SelectedRow > 0){
+				alert("Submit successfully! " + SelectedRow + " students selected.");
+			}
+		}
+	</script>
+</head>
+<body>
+	<table id="myTable">
+		<tr>
+			<th></th>
+			<th>STUDENT</th>
+			<th>ADVISOR</th>
+			<th>AWARD<br/>STATUS</th>
+			<th>SEMESTER</th>
+			<th>TYPE</th>
+			<th>BUDGET<br />#</th>
+			<th>PERCENTAGE</th>
+			<th>DELETE</th>
+		</tr>
+		<tr class="row">
+			<td><input type="checkbox" class="checkbox" onclick="SelectRow(this.parentNode.parentNode.rowIndex-1);"/><br /><br /><img src="down.png" width="25px" onclick="dropDown(this.parentNode.parentNode.rowIndex-1);"/></td>
+			<td>Student 1</td>
+			<td>Teacher 1</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>12345</td>
+			<td>100%</td>
+			<td><button class="delete" onclick="deleteRow(this.parentNode.parentNode.rowIndex);">Delete</button></td>
+		</tr>
+		<tr class="dropDownTextArea"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <br />
+			Tuition Number: <br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+		<tr class="row">
+			<td><input type="checkbox" class="checkbox" onclick="SelectRow((this.parentNode.parentNode.rowIndex-1)/2);"/><br /><br /><img src="down.png" width="25px" onclick="dropDown((this.parentNode.parentNode.rowIndex-1)/2);"/></td>
+			<td>Student 2</td>
+			<td>Teacher 2</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>23456</td>
+			<td>100%</td>
+			<td><button class="delete" onclick="deleteRow(this.parentNode.parentNode.rowIndex);">Delete</button></td>
+		</tr>
+		<tr class="dropDownTextArea"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <br />
+			Tuition Number: <br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+		<tr class="row">
+			<td><input type="checkbox"  class="checkbox" onclick="SelectRow((this.parentNode.parentNode.rowIndex-1)/2);"/><br /><br /><img src="down.png" width="25px" onclick="dropDown((this.parentNode.parentNode.rowIndex-1)/2);"/></td>
+			<td>Student 3</td>
+			<td>Teacher 3</td>
+			<td>Approved</td>
+			<td>Fall</td>
+			<td>TA</td>
+			<td>34567</td>
+			<td>100%</td>
+			<td><button class="delete" onclick="deleteRow(this.parentNode.parentNode.rowIndex);">Delete</button></td>
+		</tr>
+		<tr class="dropDownTextArea"><td colspan="8">
+			Advisor:<br /><br />
+			Award Details<br />
+			Summer 1-2014(TA)<br />
+			Budget Number: <br />
+			Tuition Number: <br />
+			Comments:<br /><br /><br />
+			Award Status:<br /><br /><br />
+		</td></tr>
+	</table>
+
+	<br /><br />
+	
+	<button id="button" onclick="show();">SUBMIT SELECTED AWARDS</button>
+	<button id="add" onclick="addRow();">Add New Student</button>
+
+	<nav class="socialmediaicons"></nav>
+	<script src="script.js"></script>
+	
+</body>
+</html>
