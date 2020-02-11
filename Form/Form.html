@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+	<head>
+	<title>Feedback</title>
+	<style>
+		label {	float: left;
+			width: 150px;
+		}
+		#container{
+			width: 700px;
+			margin: auto;
+			background-color: beige;
+		} 
+		main{
+			padding: 50px;
+		}
+		#evaluation{
+			display: none;
+		}
+	</style>
+	<script>
+		function addCheckbox(){
+			var drk = document.forms["myForm"]["Drink"].value;
+			switch(drk){
+				case "Tea":
+					document.getElementById("checkbox").innerHTML='<hr><input type="checkbox" name="evaluate" value="evaluate" onclick="evaluateDrink();"/> Evaluate for tea';
+					break;
+				case "Coffee":
+					document.getElementById("checkbox").innerHTML='<hr><input type="checkbox" name="evaluate" value="evaluate" onclick="evaluateDrink();"/> Evaluate for coffee';
+					break;
+				case "Chocolate":
+					document.getElementById("checkbox").innerHTML='<hr><input type="checkbox" name="evaluate" value="evaluate" onclick="evaluateDrink();"/> Evaluate for chocolate';
+					break;
+				case "Juice":
+					document.getElementById("checkbox").innerHTML='<hr><input type="checkbox" name="evaluate" value="evaluate" onclick="evaluateDrink();"/> Evaluate for juice';
+					break;
+				case "Soft Drink":
+					document.getElementById("checkbox").innerHTML='<hr><input type="checkbox" name="evaluate" value="evaluate" onclick="evaluateDrink();"/> Evaluate for soft drink';
+					break;
+				default:
+					document.getElementById("checkbox").innerHTML="";
+			}
+		}
+		function ck_Validity(str) {
+			var inpObj = document.getElementById(str);
+			var str_error = str + "_error";
+			if (!inpObj.checkValidity()) {
+				inpObj.style.border="2px solid red";
+				document.getElementById(str_error).style.color="red";
+				document.getElementById(str_error).innerHTML="Please fill in this field!";
+				return false;
+			}
+			else {
+				var valid = 1;
+				switch(str){
+					case "phoneNumber":
+						var phoneNumberPattern = /^\d{10}$/;
+						if(!phoneNumberPattern.test(inpObj.value)){
+							valid=0;
+							document.getElementById(str_error).style.color="red";
+							document.getElementById(str_error).innerHTML="Invalid Phone Number!";
+						}
+						break;
+					case "emailId":
+						var emailPattern = /[a-zA-Z0-9]+@+[a-zA-Z0-9]+\.+[a-zA-Z0-9]/;
+						if(!emailPattern.test(inpObj.value)){
+							valid=0;
+							document.getElementById(str_error).style.color="red";
+							document.getElementById(str_error).innerHTML="Invalid Email Id!";
+						}
+						break;
+					case "zipcode":
+						var zipCodePattern = /^\d{5}$/;
+     					if(!zipCodePattern.test(inpObj.value)){
+							valid=0;
+							document.getElementById(str_error).style.color="red";
+							document.getElementById(str_error).innerHTML="Invalid ZipCode!";
+						}
+						break;
+				}
+				if (valid==1){
+					inpObj.style.border="none";
+					document.getElementById(str_error).innerHTML="";
+					return true;
+				}
+				else{
+					inpObj.style.border="2px solid red";
+					return false;
+				}
+				
+			} 
+		}
+		function evaluateDrink(){
+			if(document.getElementsByName("evaluate")[0].checked){
+				document.getElementById("evaluation").style.display="block";
+				document.getElementById("evaluation").setAttribute("required","required");
+			}
+			else{
+				document.getElementById("evaluation").style.display="none";
+				document.getElementById("evaluation").removeAttribute("required");
+				ck_Validity("evaluation");
+			}	
+		}
+		function results(){
+			if(ck_Validity('firstName')){
+				if(ck_Validity('lastName')){
+					if(ck_Validity('emailId')){
+						if(ck_Validity('phoneNumber')){
+							if(ck_Validity('zipcode')){
+								if(document.getElementsByName("evaluate")[0].checked){
+									if(ck_Validity('evaluation')){
+										if(ck_Validity('comments')){
+											myWindow=window.open('','','width=800,height=200');
+											myWindow.document.writeln("<h1>Thank you for submitting the feedback!</h1>");
+											myWindow.document.write(`<table border="1" id="result"><tr><th>TITLE</th><th>NAME</th><th>EMAIL</th><th>PHONE</th><th>ZIPCODE</th><th>DRINK</th><th>EVALUATION</th><th>FROM</th><th>COMMENT</th></tr><tr><td>`);
+											if(document.getElementById("miss").checked){
+												myWindow.document.write(`Miss `);
+											}
+											if(document.getElementById("mr").checked){
+												myWindow.document.write(`Mr. `);
+											}
+											if(document.getElementById("mrs").checked){
+												myWindow.document.write(`Mrs. `);
+											}
+											myWindow.document.write(`</td><td>${document.myForm.firstName.value} ${document.myForm.lastName.value}</td><td>${document.myForm.emailId.value}</td><td>${document.myForm.phoneNumber.value}</td><td>${document.myForm.zipcode.value}</td><td>${document.myForm.Drink.value}</td><td>${document.myForm.evaluation.value}</td><td>`);
+											if(document.getElementsByName("source")[0].checked){
+												myWindow.document.write(`${document.myForm.facebook.value} `);
+											}
+											if(document.getElementsByName("source")[1].checked){
+												myWindow.document.write(`${document.myForm.google.value} `);
+											}
+											if(document.getElementsByName("source")[2].checked){
+												myWindow.document.write(`${document.myForm.yelp.value} `);
+											}
+											myWindow.document.write(`</td><td>${document.myForm.comments.value}</td></tr></table>`);
+										}
+									}
+								}
+								else{
+									if(ck_Validity('comments')){
+										myWindow=window.open('','','width=800,height=200');
+										myWindow.document.writeln("<h1>Thank you for submitting the feedback!</h1>");
+										myWindow.document.write(`<table border="1" id="result"><tr><th>TITLE</th><th>NAME</th><th>EMAIL</th><th>PHONE</th><th>ZIPCODE</th><th>DRINK</th><th>EVALUATION</th><th>FROM</th><th>COMMENT</th></tr><tr><td>`);
+										if(document.getElementById("miss").checked){
+											myWindow.document.write(`Miss `);
+										}
+										if(document.getElementById("mr").checked){
+											myWindow.document.write(`Mr. `);
+										}
+										if(document.getElementById("mrs").checked){
+											myWindow.document.write(`Mrs. `);
+										}
+										myWindow.document.write(`</td><td>${document.myForm.firstName.value} ${document.myForm.lastName.value}</td><td>${document.myForm.emailId.value}</td><td>${document.myForm.phoneNumber.value}</td><td>${document.myForm.zipcode.value}</td><td>${document.myForm.Drink.value}</td><td>${document.myForm.evaluation.value}</td><td>`);
+										if(document.getElementsByName("source")[0].checked){
+											myWindow.document.write(`${document.myForm.facebook.value} `);
+										}
+										if(document.getElementsByName("source")[1].checked){
+											myWindow.document.write(`${document.myForm.google.value} `);
+										}
+										if(document.getElementsByName("source")[2].checked){
+											myWindow.document.write(`${document.myForm.yelp.value} `);
+										}
+										myWindow.document.write(`</td><td>${document.myForm.comments.value}</td></tr></table>`);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	</script>
+ </head>
+ <body>
+ <div id="container">
+	 
+	 <main>
+	 <h2>Feedback</h2>
+	 <div id="feedback">
+	 <h3>Love something? Hate something? Let us know!</h3>
+		 Note : Fields marked with an asterisk(*) are mandatory
+		 <br><br>
+		 <form name="myForm" method="post">
+			<label>Title*:</label>
+			<input type="radio" name="title" id="miss" value="miss" required="required"/>Miss
+			<input type="radio" name="title" id="mr" value="mr" required="required"/>Mr.
+			<input type="radio" name="title" id="mrs" value="mrs" required="required"/>Mrs.
+			<br><br>
+
+
+			<label for="firstName">First Name*:</label>
+			<input type="text" name="firstName" id="firstName" placeholder="First Name" required onblur="ck_Validity('firstName');"/>
+			<span id="firstName_error"></span>
+			<br><br>
+			
+
+			<label for="lastName">Last Name*:</label>
+			<input type="text" name="lastName" id="lastName" placeholder="Last Name" required onblur="ck_Validity('lastName');"/>
+			<span id="lastName_error"></span>
+			<br><br>
+			
+
+			<label for="emailId">Email Id*:</label>
+			<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" required onblur="ck_Validity('emailId');"/>
+			<span id="emailId_error"></span>
+			<br><br>
+			
+
+			<label for="phoneNumber">Phone Number*:</label>
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" required onblur="ck_Validity('phoneNumber');"/>
+			<span id="phoneNumber_error"></span>
+			<br><br>
+			
+            <label for="zipcode">ZipCode*:</label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" required onblur="ck_Validity('zipcode');"/>
+			<span id="zipcode_error"></span>
+			<br><br>
+
+			<label for="Drink">Ordered Drink:</label>
+			<select id="Drink" name="Drink" required onchange="addCheckbox();">
+				<option>Tea</option>
+				<option>Coffee</option>
+				<option>Chocolate</option>
+				<option>Juice</option>
+				<option>Soft Drink</option>
+			</select>
+			<br><br> 
+			<span id="checkbox"></span>
+			<br><br>
+			<textarea name="evaluation" id="evaluation" placeholder="Your evaluation" rows="1" cols="20" onblur="ck_Validity('evaluation');"></textarea>
+			<span id="evaluation_error"></span>
+			<br><br> 
+             
+            <label for="zipcode">How did you hear*:</label>
+			<input type='checkbox' name="source" id="facebook" value="facebook"/> Facebook
+            <input type='checkbox' name="source" id="google" value="google"/> Google
+            <input type='checkbox' name="source" id="yelp" value="yelp"/> Yelp 
+			<br><br> 
+             
+			<label for="comments">Comments*:</label>
+			<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25" required onblur="ck_Validity('comments');"></textarea>
+			<span id="comments_error"></span>
+			<br><br>
+			<input type="Submit" onclick="results();">
+			<input type="Reset">
+			<br><br>
+		 </form>
+		</div>
+	 </main>
+ </div>
+
+ <script>
+ 
+ </script>
+
+ </body>
+</html>
