@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Coffee Shop</title>
+	<meta charset="utf-8">
+	<style>
+	body {
+        background-image: url(Coffee.jpg);
+		font-family: Arial, Verdana, sans-serif;
+	}
+	#content {
+        background-image: url(background.jpg);
+		margin:auto;
+		width: 850px;
+		padding: 0 20px 10px;
+		background-color: rgb(255, 255, 255);
+		box-shadow: 5px 10px 5px #1e1e1e;
+	}
+	h1 { color: #000000;
+		font-size: 3em;
+		padding-left: 200px;
+		padding-top: 30px;
+		border-radius: 25px;
+		text-shadow: 3px 3px 3px rgb(226, 224, 224);
+	}
+	h2 { color: #000033; 
+		font-family: arial, sans-serif;
+		text-shadow: 1px 1px 0 #ccc;
+	}
+	nav {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+	nav a {
+        text-decoration: none;
+    }
+    main {
+        font-size: 1.3em;
+        column-count:2;
+        column-fill: auto;
+        padding-top: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+	footer { font-size: .80em;
+			font-style: italic;
+			}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<header>
+			<h1>Coffee Shop Menu</h1>
+			<hr>
+			<nav>
+				<a href="home.html">Home</a> &nbsp;
+				<a href="menu.html">Menu</a> &nbsp;
+				<a href="description.html">About us</a> &nbsp;
+				<a href="jobs.html">Jobs</a> &nbsp;
+			</nav>
+			<hr>
+		</header>
+		<main>
+            <div id="left">
+                <h2>Coffee</h2>
+                <ul>
+                    <li>Cold Brew Coffee</li>
+                    <li>Sweet Maple Cold Brew</li>
+                    <li>Iced Machiato or Latte</li>
+                    <li>Iced Americano</li>
+                    <li>Pour Over Coffee</li>
+                    <li>Express Brew</li>
+                    <li>A Shot in the Dark</li>
+                    <li>Mocha</li>
+                    <li>Espresso</li>
+                </ul>
+                
+                <h2>Not Coffee</h2>
+                <ul>
+                    <li>Hot Cocoa</li>
+                    <li>Steamer</li>
+                    <li>Horchata</li>
+                </ul>
+                
+            </div>
+            <div id="right">
+                <h2>Tea</h2>
+                <ul>
+                    <li>Black Tee</li>
+                    <li>Green Tea</li>
+                    <li>Herbal Tea</li>
+                    <li>Chai Tea Latte</li>
+                </ul>
+                <h2>Not Tea</h2>
+                <ul>
+                    <li>Lemonade</li>
+                    <li>Soda</li>
+                    <li>Italian Cream Soda</li>
+                    <li>Ginger Berry Smash</li>
+                </ul>
+            </div>
+            
+            
+		</main>
+		<footer>
+			<small><i>Copyright &copy; 2020 Beiyi Sheng; Contact:<a href=mailto:sheng.b@husky.neu.edu>sheng.b@husky.neu.edu</a></i></small>
+		</footer>
+	</div>
+</body>
+</html>
